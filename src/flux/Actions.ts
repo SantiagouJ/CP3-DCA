@@ -1,48 +1,22 @@
 import { AppDispatcher } from './Dispatcher';
-import { State } from './Store';
 
-export const CounterActionTypes = {
-    INCREMENT_COUNT: 'INCREMENT_COUNT',
-    DECREMENT_COUNT: 'DECREMENT_COUNT'
-};
+export const NavigationActionsType = {
+    NAVIGATE: 'NAVIGATE',
+    UPDATE_PATH: 'UPDATE_PATH'
+} as const;
 
-export const UserActionTypes = {
-    SAVE_USER: 'SAVE_USER',
-};
 
-export const StoreActionTypes = {
-    LOAD_STATE: 'LOAD_STATE',
-};
-
-export const StoreActions = {
-    loadState: (state: State) => {
+export const NavigationActions = {
+    navigate: (path: string) => {
         AppDispatcher.dispatch({
-            type: StoreActionTypes.LOAD_STATE,
-            payload: state,
+            type: NavigationActionsType.NAVIGATE,
+            payload: path
         });
     },
+    updatePath: (path: string) => {
+        AppDispatcher.dispatch({
+            type: NavigationActionsType.UPDATE_PATH,
+            payload: path
+        });
+    }
 }
-
-export const CounterActions = {
-    increment: (value: number) => {
-        AppDispatcher.dispatch({
-            type: CounterActionTypes.INCREMENT_COUNT,
-            payload: value,
-        });
-    },
-    decrement: (value: number) => {
-        AppDispatcher.dispatch({
-            type: CounterActionTypes.DECREMENT_COUNT,
-            payload: value,
-        });
-    },
-};
-
-export const UserActions = {
-    saveUser: (user: { name: string; age: number }) => {
-        AppDispatcher.dispatch({
-            type: UserActionTypes.SAVE_USER,
-            payload: user,
-        });
-    },
-};

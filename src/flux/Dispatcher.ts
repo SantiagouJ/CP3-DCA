@@ -1,8 +1,8 @@
-export interface Action {
-    type: string;
-    payload?: object | number | string;
-}
+import { NavigationActionsType } from "./Actions";
 
+
+export type Action =   | { type: typeof NavigationActionsType.NAVIGATE; payload: string }
+  | { type: typeof NavigationActionsType.UPDATE_PATH; payload: string }
 export class Dispatcher {
     // Los metodos de cada store que accionan las handleActions
     private _listeners: Array<(action: Action) => void>;

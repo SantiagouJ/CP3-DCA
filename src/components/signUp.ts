@@ -1,3 +1,4 @@
+import { NavigationActions } from "../flux/Actions"
 import { registerUser } from "../services/firebase/registerUserService"
 
 class SignUpComp extends HTMLElement {
@@ -67,6 +68,8 @@ class SignUpComp extends HTMLElement {
                         alert('Error al registrar el usuario. Por favor, verifica tus datos.');
                         return;
                     }
+                    alert('Usuario registrado exitosamente.');
+                    NavigationActions.navigate('/home');
                 })
                 .catch((error) => {
                     console.error('Error al registrar el usuario:', error);
